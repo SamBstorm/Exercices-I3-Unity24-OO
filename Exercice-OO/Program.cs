@@ -15,16 +15,16 @@ namespace Exercice_OO
             */
 
             Joueur j1 = new Joueur();
-            j1.nom = "Sam";
-            j1.pion = Pions.Dino;
+            j1.Nom = "Sam";
+            j1.Pion = Pions.Dino;
 
-            Console.WriteLine($"Bonjour Joueur 1 ({j1.nom}) : Votre {j1.pion} est à la case {j1.position}.");
+            Console.WriteLine($"Bonjour Joueur 1 ({j1.Nom}) : Votre {j1.Pion} est à la case {j1.Position}.");
 
             while (j1.Avancer())
             {
-                Console.WriteLine($"Vous arrivez en case {j1.position} et vous avez fais un double! Rejouez!");
+                Console.WriteLine($"Vous arrivez en case {j1.Position} et vous avez fais un double! Rejouez!");
             }
-            Console.WriteLine($"Vous avez atterri sur la case {j1.position}, laissez votre tour au suivant.");
+            Console.WriteLine($"Vous avez atterri sur la case {j1.Position}, laissez votre tour au suivant.");
         }
     }
 }
