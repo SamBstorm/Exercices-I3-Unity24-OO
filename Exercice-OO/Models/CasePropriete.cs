@@ -7,17 +7,15 @@ using System.Threading.Tasks;
 
 namespace Exercice_OO.Models
 {
-    public class CasePropriete
+    public class CasePropriete : Case
     {
-        public string Nom { get; private set; }
         public Couleurs Couleur { get; private set; }
         public int Prix { get; private set; }
         public bool EstHypotequee { get; private set; }
         public Joueur Proprietaire { get; private set; }
 
-        public CasePropriete(string nom, Couleurs couleur, int prix)
+        public CasePropriete(string nom, Couleurs couleur, int prix) : base(nom)
         {
-            this.Nom = nom;
             this.Couleur = couleur;
             this.Prix = prix;
             //Les lignes suivantes sont non-obligatoire, car c'est l'attribution de valeur par défaut.
