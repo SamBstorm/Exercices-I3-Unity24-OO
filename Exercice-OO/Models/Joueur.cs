@@ -60,5 +60,17 @@ namespace Exercice_OO.Models
                 _proprietes.Add(propriete);
             }
         }
+
+        public static Joueur operator +(Joueur left, int right)
+        {
+            left.EtrePayer(right);
+            return left;
+        }
+
+        public static CasePropriete[] operator + (Joueur left, CasePropriete right)
+        {
+            right.Acheter(left);
+            return left.Proprietes;
+        }
     }
 }

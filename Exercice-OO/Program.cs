@@ -95,8 +95,8 @@ namespace Exercice_OO
                 j.Avancer();
                 CasePropriete caseActuelle = monopoly[j.Position];
                 Console.WriteLine($"{j.Nom} avance avec son/sa {j.Pion} sur la case {caseActuelle.Nom}");
-                caseActuelle.Acheter(j);
-                Console.WriteLine($"{j.Nom} a actuellement {j.Proprietes.Length} propriété(s)");
+                CasePropriete[] casesDeJ = j + caseActuelle;
+                Console.WriteLine($"{j.Nom} a actuellement {casesDeJ.Length} propriété(s)");
                 Console.WriteLine($"{j.Nom} a actuellement {j.Solde} Monopoly");
             }
         }
