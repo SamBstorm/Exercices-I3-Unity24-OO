@@ -24,12 +24,31 @@ namespace Exercice_OO.Models
             //Proprietaire = null;
         }
 
-        public void Acheter(Joueur acheteur)
+        private void Acheter(Joueur acheteur)
         {
             if (acheteur.Solde < this.Prix) return;     //Gestion d'exception
             acheteur.Payer(this.Prix);
             this.Proprietaire = acheteur;
             acheteur.AjouterPropriete(this);
+        }
+
+        private void Sejourner(Joueur visiteur)
+        {
+            int loyer = Prix / 4;
+            visiteur.Payer(loyer);
+            Proprietaire.EtrePayer(loyer);
+        }
+
+        public override void Activer(Joueur visiteur)
+        {
+            if(Proprietaire is null)
+            {
+                Acheter(visiteur);
+            }
+            else if( Proprietaire != visiteur && !EstHypotequee)
+            {
+                Sejourner(visiteur);
+            }
         }
     }
 }

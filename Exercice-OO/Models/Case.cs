@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Exercice_OO.Models
 {
-    public class Case
+    public abstract class Case
     {
         private List<Joueur> _visiteurs;
         public string Nom { get; }
@@ -24,5 +24,7 @@ namespace Exercice_OO.Models
         {
             _visiteurs.Remove(visiteur);
         }
+
+        public abstract void Activer(Joueur visiteur);
     }
 }

@@ -90,20 +90,32 @@ namespace Exercice_OO
                 monopoly.AjouterJoueur(name, Enum.Parse<Pions>(pion));
             }
 
-            foreach (Joueur j in monopoly.Joueurs)
+            for (int i = 0; i < 10; i++)
             {
-                j.Avancer();
-                //CasePropriete caseActuelle = (CasePropriete) monopoly[j.Position];
-                Case caseActuelle = monopoly[j.Position];
-                Console.WriteLine($"{j.Nom} avance avec son/sa {j.Pion} sur la case {caseActuelle.Nom}");
-                if(caseActuelle is CasePropriete propriete)
+                foreach (Joueur j in monopoly.Joueurs)
                 {
-                    //CasePropriete[] casesDeJ = j + propriete;
-                    propriete.Acheter(j);
-                    CasePropriete[] casesDeJ = j.Proprietes;
-                    Console.WriteLine($"{j.Nom} a actuellement {casesDeJ.Length} propriété(s)");
-                    Console.WriteLine($"{j.Nom} a actuellement {j.Solde} Monopoly");
-                }
+                    bool rejouer;
+                    do
+                    {
+                        rejouer = j.Avancer();
+                        //CasePropriete caseActuelle = (CasePropriete) monopoly[j.Position];
+                        Case caseActuelle = monopoly[j.Position];
+                        Console.WriteLine($"{j.Nom} avance avec son/sa {j.Pion} sur la case {caseActuelle.Nom}");
+                        /*
+                         * if(caseActuelle is CasePropriete propriete)
+                        {
+                            //CasePropriete[] casesDeJ = j + propriete;
+                            propriete.Acheter(j);
+                            CasePropriete[] casesDeJ = j.Proprietes;
+                            Console.WriteLine($"{j.Nom} a actuellement {casesDeJ.Length} propriété(s)");
+                            Console.WriteLine($"{j.Nom} a actuellement {j.Solde} Monopoly");
+                        }*/
+                        caseActuelle.Activer(j);
+                        CasePropriete[] casesDeJ = j.Proprietes;
+                        Console.WriteLine($"{j.Nom} a actuellement {casesDeJ.Length} propriété(s)");
+                        Console.WriteLine($"{j.Nom} a actuellement {j.Solde} Monopoly");
+                    } while (rejouer);
+                } 
             }
         }
     }

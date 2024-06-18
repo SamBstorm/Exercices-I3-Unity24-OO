@@ -67,10 +67,11 @@ namespace Exercice_OO.Models
             return left;
         }
 
-        public static CasePropriete[] operator + (Joueur left, CasePropriete right)
+        /* Pour l'exercice "Abstraction"
+         * public static CasePropriete[] operator + (Joueur left, CasePropriete right)
         {
             right.Acheter(left);
             return left.Proprietes;
-        }
+        }*/
     }
 }
