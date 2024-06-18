@@ -10,12 +10,12 @@ namespace Exercice_OO.Models
     public class Jeu
     {
         private List<Joueur> _joueurs;
-        private List<CasePropriete> _plateau;
+        private List<Case> _plateau;
 
         public Joueur[] Joueurs { get {  return _joueurs.ToArray(); } }
-        public CasePropriete[] Plateau { get { return _plateau.ToArray(); } }
+        public Case[] Plateau { get { return _plateau.ToArray(); } }
 
-        public CasePropriete this[int index]
+        public Case this[int index]
         {
             get {
                 //if (index >= _plateau.Count) return null;
@@ -37,9 +37,9 @@ namespace Exercice_OO.Models
             }
         }
 
-        public Jeu(CasePropriete[] plateau)
+        public Jeu(Case[] plateau)
         {
-            _plateau = new List<CasePropriete>();
+            _plateau = new List<Case>();
             _plateau.AddRange(plateau);
             _joueurs = new List<Joueur>();
         }

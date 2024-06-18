@@ -93,11 +93,17 @@ namespace Exercice_OO
             foreach (Joueur j in monopoly.Joueurs)
             {
                 j.Avancer();
-                CasePropriete caseActuelle = monopoly[j.Position];
+                //CasePropriete caseActuelle = (CasePropriete) monopoly[j.Position];
+                Case caseActuelle = monopoly[j.Position];
                 Console.WriteLine($"{j.Nom} avance avec son/sa {j.Pion} sur la case {caseActuelle.Nom}");
-                CasePropriete[] casesDeJ = j + caseActuelle;
-                Console.WriteLine($"{j.Nom} a actuellement {casesDeJ.Length} propriété(s)");
-                Console.WriteLine($"{j.Nom} a actuellement {j.Solde} Monopoly");
+                if(caseActuelle is CasePropriete propriete)
+                {
+                    //CasePropriete[] casesDeJ = j + propriete;
+                    propriete.Acheter(j);
+                    CasePropriete[] casesDeJ = j.Proprietes;
+                    Console.WriteLine($"{j.Nom} a actuellement {casesDeJ.Length} propriété(s)");
+                    Console.WriteLine($"{j.Nom} a actuellement {j.Solde} Monopoly");
+                }
             }
         }
     }
