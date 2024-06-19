@@ -110,10 +110,30 @@ namespace Exercice_OO
                             Console.WriteLine($"{j.Nom} a actuellement {casesDeJ.Length} propriété(s)");
                             Console.WriteLine($"{j.Nom} a actuellement {j.Solde} Monopoly");
                         }*/
-                        caseActuelle.Activer(j);
+                        IVisiteur caseVisitee = caseActuelle;
+                        caseVisitee.Activer(j);
                         CasePropriete[] casesDeJ = j.Proprietes;
                         Console.WriteLine($"{j.Nom} a actuellement {casesDeJ.Length} propriété(s)");
                         Console.WriteLine($"{j.Nom} a actuellement {j.Solde} Monopoly");
+                        if(caseVisitee is CasePropriete propriete)
+                        {
+                            if(j == propriete.Proprietaire)
+                            {
+                                IProprietaire propDeJ = propriete;
+                                Console.WriteLine("Voulez-vous Hypothéquer ou Déshypothèquer cette propriété ?");
+                                Console.WriteLine("1. Hypothéquer | 2. Déshypothèquer | 3. Ne rien faire");
+                                string choix = Console.ReadLine();
+                                switch (choix)
+                                {
+                                    case "1":
+                                        propDeJ.Hypothequer();
+                                        break;
+                                    case "2":
+                                        propDeJ.Deshypothequer();
+                                        break;
+                                }
+                            }
+                        }
                     } while (rejouer);
                 } 
             }

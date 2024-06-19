@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Exercice_OO.Models
 {
-    public abstract class Case
+    public abstract class Case : IVisiteur
     {
         private List<Joueur> _visiteurs;
         public string Nom { get; }

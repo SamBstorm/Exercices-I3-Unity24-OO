@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Exercice_OO.Models
 {
-    public class CasePropriete : Case
+    public class CasePropriete : Case, IProprietaire
     {
         public Couleurs Couleur { get; private set; }
         public int Prix { get; private set; }
@@ -49,6 +49,20 @@ namespace Exercice_OO.Models
             {
                 Sejourner(visiteur);
             }
+        }
+
+        public void Hypothequer()
+        {
+            if (EstHypotequee) return;      //Gestion d'exception
+            EstHypotequee = true;
+            Proprietaire.EtrePayer(Prix / 2);
+        }
+
+        public void Deshypothequer()
+        {
+            if(!EstHypotequee) return;
+            Proprietaire.Payer(Prix * 3 / 5);
+            EstHypotequee = false;
         }
     }
 }
