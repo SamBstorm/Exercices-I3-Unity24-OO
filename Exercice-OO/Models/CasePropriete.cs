@@ -26,10 +26,17 @@ namespace Exercice_OO.Models
 
         private void Acheter(Joueur acheteur)
         {
-            if (acheteur.Solde < this.Prix) return;     //Gestion d'exception
-            acheteur.Payer(this.Prix);
-            this.Proprietaire = acheteur;
-            acheteur.AjouterPropriete(this);
+            //if (acheteur.Solde < this.Prix) return;     //Gestion d'exception
+            try
+            {
+                acheteur.Payer(this.Prix);
+                this.Proprietaire = acheteur;
+                acheteur.AjouterPropriete(this);
+            }
+            catch (NotEnoughMoneyException nomEx)
+            {
+                throw new NotEnoughMoneyException(nomEx.Payeur, nomEx.Montant, this);
+            }
         }
 
         private void Sejourner(Joueur visiteur)

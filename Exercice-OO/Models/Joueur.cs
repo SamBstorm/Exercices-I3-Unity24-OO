@@ -49,7 +49,7 @@ namespace Exercice_OO.Models
         public void Payer(int montant)
         {
             if (montant <= 0) return;    //Gestion d'exception
-            if (montant > Solde) return; //Gestion d'exception
+            if (montant > Solde) throw new NotEnoughMoneyException(this, montant);
             Solde -= montant;
         }
 
