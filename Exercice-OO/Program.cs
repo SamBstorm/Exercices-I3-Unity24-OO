@@ -45,29 +45,50 @@ namespace Exercice_OO
             Console.WriteLine($"Il a actuellement {j1.Solde} Monopoly");
             */
 
+            //Modifions le plateau de jeu pour obtenir des CaseAction qui déclencherons une nouvelle interraction avec le joueur.
             Jeu monopoly = new Jeu(
                 [
+                    //La première case est la case départ, le but est de donner de l'argent au joueur lorsqu'il atteint la case (il aurait été judicieux de créer une nouvelle class avec des événements permettant de détecter le dépassement)
+                    // Comme nous n'avons pas défini de méthode permettant au joueur de recevoir une somme précise, nous créons une méthode anonyme (avec le mot-clé delegate) qui exécutera l'instruction.
+                    new CaseAction("Case départ", delegate(Joueur visiteur){
+                        visiteur.EtrePayer(200);
+                    }),
                     new CasePropriete("Entrée parc", Couleurs.Marron, 10),
+                    new CaseAction("Impôts", delegate(Joueur visiteur){
+                        visiteur.Payer(100);
+                    }),
                     new CasePropriete("Entrée métro", Couleurs.Marron, 12),
                     new CasePropriete("Cage ascenceur Bât. Gauche", Couleurs.BleuCiel, 14),
                     new CasePropriete("Cage ascenceur Bât. Droite", Couleurs.BleuCiel, 14),
                     new CasePropriete("Cage escalier de secours", Couleurs.BleuCiel, 18),
+                    new CaseAction("Prison", delegate(Joueur visiteur){
+                        visiteur.Payer(100);
+                    }),
                     new CasePropriete("Toilette Femme", Couleurs.Violet, 22),
                     new CasePropriete("Toilette Homme", Couleurs.Violet, 22),
                     new CasePropriete("Toilette Mixte", Couleurs.Violet, 26),
                     new CasePropriete("Classe de WEB", Couleurs.Orange, 30),
                     new CasePropriete("Classe de WAD", Couleurs.Orange, 30),
                     new CasePropriete("Classe de GAMES", Couleurs.Orange, 32),
+                    new CaseAction("Parc gratuit", delegate(Joueur visiteur){
+                        return;
+                    }),
                     new CasePropriete("Réfectoire Bât. Gauche", Couleurs.Rouge, 36),
                     new CasePropriete("Réfectoire Bât. Droite", Couleurs.Rouge, 36),
                     new CasePropriete("Réfectaire administration", Couleurs.Rouge, 40),
                     new CasePropriete("Salle photocopieuses", Couleurs.Jaune, 44),
                     new CasePropriete("Salle des formateurs", Couleurs.Jaune, 44),
                     new CasePropriete("Salle de repos", Couleurs.Jaune, 48),
+                    new CaseAction("Aller en Prison", delegate(Joueur visiteur){
+                        visiteur.Payer(100);
+                    }),
                     new CasePropriete("Passerelles Niv. 1 et 2", Couleurs.Vert, 52),
                     new CasePropriete("Passerelles Niv. 3 et 4", Couleurs.Vert, 52),
                     new CasePropriete("Patio", Couleurs.Vert, 56),
                     new CasePropriete("Bureau Sonia", Couleurs.Bleu, 60),
+                    new CaseAction("Impôts", delegate(Joueur visiteur){
+                        visiteur.Payer(100);
+                    }),
                     new CasePropriete("Bureau Nicole", Couleurs.Bleu, 64)
                 ]);
             Console.WriteLine("Bienvenu dans Monopoly Interface 3 Le jeu Deluxe Edition SP Lite Turbo");
